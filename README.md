@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6fa91bc144a9434cae81a02528a639aa)](https://app.codacy.com/gh/FelipeMendes1/UFAPE-Cars/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 # UFAPE-Cars
 ## Sistema de Concessionária de Veículos
 <hr>
@@ -42,7 +44,6 @@ das vendas, estoque e eficácia das estratégias de marketing.
 * Versão 7.0.2.2
 ### [RubyMine](https://www.jetbrains.com/pt-br/ruby/)
 * Versão 2021.3.2
-### [Codacy](https://www.codacy.com)
 ### [Render](https://render.com)
 ### [GitHubActions](https://github.com/features/actions)
 
