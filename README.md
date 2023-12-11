@@ -18,7 +18,10 @@ o processo de financiamento. Para impulsionar o marketing digital, o sistema est
 á disponível online, possibilitando a exposição dos veículos disponíveis e
 também oferecendo atendimento ao cliente. Ademais, conta com recursos de
 relatórios e análises para fornecer insights sobre o desempenho das vendas,
-estoque e eficácia das estratégias de marketing.
+estoque e eficácia das estratégias de marketing, Além disso, a plataforma possui 
+uma interface intuitiva e segura, garantindo uma experiência de uso fluída para 
+os usuários. O projeto foi desenvolvido seguindo as melhores práticas de engenharia 
+de software e está em constante evolução para atender às necessidades do mercado automotivo.
 
 *   [Site no Render](https://ufape-cars-7cvk.onrender.com/)
 
