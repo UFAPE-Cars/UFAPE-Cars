@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  modelo: MyString
+  ano: 1
+  quilometragem: 1.5
+  uso: MyString
+  historico_manutencao: MyText
+  tabela_fipe: 1.5
+  valor_anuncio: 1.5
+
+two:
+  modelo: MyString
+  ano: 1
+  quilometragem: 1.5
+  uso: MyString
+  historico_manutencao: MyText
+  tabela_fipe: 1.5
+  valor_anuncio: 1.5
