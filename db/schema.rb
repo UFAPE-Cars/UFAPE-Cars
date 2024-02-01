@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema[7.0].define(version: 2024_01_30_163317) do
+  create_table "veiculos", force: :cascade do |t|
+    t.string "modelo"
+    t.integer "ano"
+    t.float "quilometragem"
+    t.string "uso"
+    t.text "historico_manutencao"
+    t.float "tabela_fipe"
+    t.float "valor_anuncio"
+
 ActiveRecord::Schema[7.0].define(version: 2024_02_01_044700) do
   create_table "vendedors", force: :cascade do |t|
     t.string "nome"
