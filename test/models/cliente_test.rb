@@ -23,7 +23,7 @@ class ClienteTest < ActiveSupport::TestCase
   end
 
   test "telefone deve seguir o formato especificado" do
-    @cliente.telefone = "1187654321" # Formato incorreto, sem DDD
+    @cliente.telefone = "1187654321" # Formato incorreto
     assert_not @cliente.valid?
     @cliente.telefone = "(11)98765-4321" # Formato correto com formatação
     assert @cliente.valid?
