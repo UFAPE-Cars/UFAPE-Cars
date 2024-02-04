@@ -1,6 +1,6 @@
 class Cliente < ApplicationRecord
   # Relacionamentos
-  has_many :vendas, dependent: :destroy
+  has_many :vendas
 
   # Validations
   validates :nome, presence: true, length: { minimum: 2, maximum: 100 }
