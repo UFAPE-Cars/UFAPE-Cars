@@ -216,6 +216,19 @@ GEM
     reline (0.4.1)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.1)
     rubyzip (2.3.2)
     selenium-webdriver (4.16.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -274,6 +287,7 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.2, = 7.0.2.2)
+  rspec
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
