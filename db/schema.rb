@@ -10,8 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema[7.0].define(version: 2024_02_04_122538) do
+  create_table "clientes", force: :cascade do |t|
+    t.string "nome"
+    t.string "telefone"
+    t.string "email"
+    t.integer "idade"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_30_163317) do
   create_table "veiculos", force: :cascade do |t|
     t.string "modelo"
     t.integer "ano"
@@ -20,8 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_30_163317) do
     t.text "historico_manutencao"
     t.float "tabela_fipe"
     t.float "valor_anuncio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_01_044700) do
   create_table "vendedors", force: :cascade do |t|
     t.string "nome"
     t.integer "idade"
