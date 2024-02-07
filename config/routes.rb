@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vendas
   resources :clientes
   resources :veiculos do
     get "list", on: :collection

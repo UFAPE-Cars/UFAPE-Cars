@@ -1,5 +1,7 @@
 require "test_helper"
 
+has_many  :vendas
+
 class VendedorTest < ActiveSupport::TestCase
   test 'vendedor deve ser válido' do
     vendedor = Vendedor.new(
