@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_04_122538) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_07_232217) do
   create_table "clientes", force: :cascade do |t|
     t.string "nome"
     t.string "telefone"
@@ -33,6 +33,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_04_122538) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "vendas", force: :cascade do |t|
+    t.integer "cliente_id", null: false
+    t.integer "veiculo_id", null: false
+    t.integer "vendedor_id", null: false
+    t.decimal "valor"
+    t.integer "quantidade_veiculos"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_vendas_on_cliente_id"
+    t.index ["veiculo_id"], name: "index_vendas_on_veiculo_id"
+    t.index ["vendedor_id"], name: "index_vendas_on_vendedor_id"
+  end
+
   create_table "vendedors", force: :cascade do |t|
     t.string "nome"
     t.integer "idade"
@@ -42,4 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_04_122538) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "vendas", "clientes"
+  add_foreign_key "vendas", "veiculos"
+  add_foreign_key "vendas", "vendedors"
 end

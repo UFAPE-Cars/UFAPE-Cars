@@ -1,6 +1,6 @@
-# test/models/cliente_test.rb
-
 require 'test_helper'
+
+has_many :vendas
 
 class ClienteTest < ActiveSupport::TestCase
   setup do
