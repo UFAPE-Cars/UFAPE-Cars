@@ -12,18 +12,27 @@
   <% end %>
 
   <div>
-    <%= form.label :cliente_id, "Cliente:", style: "display: block" %>
-    <%= form.collection_select :cliente_id, @clientes, :id, :nome, { prompt: "Selecione o cliente" }, { class: "form-control" } %>
+    <% if @clientes.present? %>
+      <%= form.collection_select :cliente_id, @clientes, :id, :nome, { prompt: "Selecione o cliente" }, { class: "form-control" } %>
+    <% else %>
+      <!-- Handle the case where @clientes is nil or empty -->
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :veiculo_id, "Veículo:", style: "display: block" %>
-    <%= form.collection_select :veiculo_id, @veiculos, :id, :modelo, { prompt: "Selecione o veículo" }, { class: "form-control" } %>
+    <% if @veiculos.present? %>
+      <%= form.collection_select :veiculo_id, @veiculos, :id, :modelo, { prompt: "Selecione o veículo" }, { class: "form-control" } %>
+    <% else %>
+      <!-- Handle the case where @veiculos is nil or empty -->
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :vendedor_id, "Vendedor:", style: "display: block" %>
-    <%= form.collection_select :vendedor_id, @vendedores, :id, :nome, { prompt: "Selecione o vendedor" }, { class: "form-control" } %>
+    <% if @vendedores.present? %>
+      <%= form.collection_select :vendedor_id, @vendedores, :id, :nome, { prompt: "Selecione o vendedor" }, { class: "form-control" } %>
+    <% else %>
+      <!-- Handle the case where @vendedores is nil or empty -->
+    <% end %>
   </div>
 
   <div>
