@@ -1,5 +1,7 @@
 class Veiculo < ApplicationRecord
 
+  has_many :vendas
+
   validates :modelo, presence: true, length: {minimum: 2, maximum: 50}
   validates :modelo, format: {with: /\A[a-zA-Z0-9\s]+\z/, message: "do modelo deve conter apenas letras, números e espaços"}
 
