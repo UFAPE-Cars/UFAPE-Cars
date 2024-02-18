@@ -1,6 +1,6 @@
 <%= form_with(model: veiculo) do |form| %>
   <% if veiculo.errors.any? %>
-    <div style="color: red">
+    <div id="motivo_erro" style="color: red">
       <h2><%= pluralize(veiculo.errors.count, "error") %> prohibited this veiculo from being saved:</h2>
 
       <ul>

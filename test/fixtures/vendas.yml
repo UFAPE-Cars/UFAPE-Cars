@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente: one
+  veiculo: one
+  vendedor: one
+  valor: 9.99
+  quantidade_veiculos: 1
+  status: MyString
+
+two:
+  cliente: two
+  veiculo: two
+  vendedor: two
+  valor: 9.99
+  quantidade_veiculos: 1
+  status: MyString
