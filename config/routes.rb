@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   resources :veiculos do
     get "list", on: :collection
   end
-  resources :vendedors
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :vendedors do
+    collection do
+      get 'buscar'
+    end
+    resources :vendas, only: [:index]
+  end
 
   # Defines the root path route ("/")
   root "render#index"

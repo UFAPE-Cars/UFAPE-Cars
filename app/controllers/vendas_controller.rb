@@ -1,8 +1,14 @@
 class VendasController < ApplicationController
+
   before_action :set_venda, only: %i[show edit update destroy]
+  before_action :set_vendedor, only: [:index]
 
   def index
-    @vendas = Venda.all
+    if @vendedor
+      @vendas = @vendedor.vendas
+    else
+      @vendas = Venda.all
+    end
   end
 
   def show
@@ -53,8 +59,13 @@ class VendasController < ApplicationController
   end
 
   private
+
   def set_venda
     @venda = Venda.find(params[:id])
+  end
+
+  def set_vendedor
+    @vendedor = Vendedor.find(params[:vendedor_id]) if params[:vendedor_id]
   end
 
   def venda_params
