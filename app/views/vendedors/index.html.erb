@@ -2,12 +2,25 @@
 
 <h1>Vendedors</h1>
 
+<%= form_with(url: buscar_vendedors_path, method: :get, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :q, "Buscar por Nome ou CPF:" %>
+    <%= form.text_field :q %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Buscar" %>
+  </div>
+<% end %>
+
 <div id="vendedors">
   <% @vendedors.each do |vendedor| %>
-    <%= render vendedor %>
-    <p>
-      <%= link_to "Show this vendedor", vendedor %>
-    </p>
+    <div>
+      <p><%= vendedor.nome %> - <%= vendedor.cpf %></p>
+      <p>
+        <%= link_to "Show this vendedor", vendedor %>
+        <%= link_to 'Ver Histórico de Vendas', vendedor_vendas_path(vendedor_id: vendedor.id) %>
+      </p>
+    </div>
   <% end %>
 </div>
 

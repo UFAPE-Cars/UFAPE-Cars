@@ -57,14 +57,21 @@ class VendedorsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vendedor
-      @vendedor = Vendedor.find(params[:id])
-    end
+  # Adicionando a ação de buscar
+  def buscar
+    query = params[:q]
+    @vendedors = Vendedor.where('nome LIKE ? OR cpf = ?', "%#{query}%", query)
+    render :index  # Pode optar por renderizar uma view específica para resultados de busca
+  end
 
-    # Only allow a list of trusted parameters through.
-    def vendedor_params
-      params.require(:vendedor).permit(:nome, :idade, :cpf, :comissao)
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vendedor
+    @vendedor = Vendedor.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def vendedor_params
+    params.require(:vendedor).permit(:nome, :idade, :cpf, :comissao)
+  end
 end
