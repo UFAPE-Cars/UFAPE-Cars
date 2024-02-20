@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Buscar Veiculos</h1>
+
+<%= form_with url: "/veiculos/buscar", method: :get do |form| %>
+  <div>
+    <%= form.label :modelo, style: "display: block" %>
+    <%= form.text_field :modelo %>
+  </div><br>
+
+  <div>
+    <%= form.radio_button :uso, "Todos" %>
+    <%= form.label :uso_todos, "Todos" %>
+    <%= form.radio_button :uso, "Novo" %>
+    <%= form.label :uso_novo, "Novo" %>
+    <%= form.radio_button :uso, "Usado" %>
+    <%= form.label :uso_usado, "Usado" %>
+    <%= form.radio_button :uso, "Seminovo" %>
+    <%= form.label :uso_seminovo, "Seminovo" %>
+  </div><br>
+
+  <div>
+    <%= form.label :limite_inferior, "Valor mínimo:" %>
+    <%= form.number_field :limite_inferior, in: 1.0..9999999.0, step: 1.0 %>
+    <%= form.label :limite_superior, "Valor máximo:" %>
+    <%= form.number_field :limite_superior, in: 1.0..9999999.0, step: 1.0 %>
+  </div><br>
+
+  <%= form.submit "Buscar" %>
+<% end %>
+<hr>
+
+<div id="veiculos">
+  <% if @veiculos.empty? %>
+    <div style="margin-top: 50px">
+        <p>Nenhum veiculo encontrado</p>
+    </div>
+  <% end %>
+
+  <% @veiculos.each do |veiculo| %>
+    <div style="margin-top: 50px">
+        <%= render veiculo %>   
+    </div>
+  <% end %>
+</div>
