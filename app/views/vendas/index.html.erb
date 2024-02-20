@@ -1,14 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Vendas</h1>
+<% if @vendedor.present? %>
+  <h1>Historico de Vendas de <%= @vendedor.nome %></h1>
 
-<div id="vendas">
-  <% @vendas.each do |venda| %>
-    <%= render venda %>
-    <p>
-      <%= link_to "Show this venda", venda %>
-    </p>
-  <% end %>
-</div>
+  <div id="vendas">
+    <% if @vendas.empty? %>
+      <p>Nenhuma venda registrada para este vendedor.</p>
+    <% else %>
+      <% @vendas.each do |venda| %>
+        <div>
+          <p>Cliente: <%= venda.cliente.nome %></p>
+          <p>Veículo: <%= venda.veiculo.modelo %></p>
+          <p>Valor: <%= number_to_currency(venda.valor) %></p>
+          <p>Status: <%= venda.status.capitalize %></p>
+          <%= link_to "Show this venda", venda %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-<%= link_to "New venda", new_venda_path %>
+  <%= link_to "New venda", new_venda_path %>
+<% else %>
+  <p>Vendedor não encontrado. Por favor, selecione um vendedor válido.</p>
+<% end %>
