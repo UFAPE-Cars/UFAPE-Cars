@@ -20,5 +20,12 @@ Feature: Gerenciamento de venda
     When eu clico no botao Remover
     Then eu devo ver uma mensagem de Remocao
 
+  Scenario: Visualizar detalhes de uma venda
+    Given vejo que existem vendas registradas no sistema
+    When eu seleciono uma venda especifica
+    Then eu devo ver os detalhes completos da venda
 
-
+  Scenario: Listar todas as vendas registradas
+    Given que existem varias vendas registradas no sistema
+    When eu visito a pagina de listagem de vendas
+    Then eu devo ver uma lista de todas as vendas com seus detalhes

@@ -11,6 +11,7 @@
         <div>
           <p>Cliente: <%= venda.cliente.nome %></p>
           <p>Veículo: <%= venda.veiculo.modelo %></p>
+          <p>Vendedor: <%= venda.vendedor.nome%></p>
           <p>Valor: <%= number_to_currency(venda.valor) %></p>
           <p>Status: <%= venda.status.capitalize %></p>
           <%= link_to "Show this venda", venda %>
@@ -21,5 +22,20 @@
 
   <%= link_to "New venda", new_venda_path %>
 <% else %>
-  <p>Vendedor não encontrado. Por favor, selecione um vendedor válido.</p>
+  <div id="vendas">
+    <% if @vendas.empty? %>
+      <p>Nenhuma venda registrada.</p>
+    <% else %>
+      <% @vendas.each do |venda| %>
+        <div>
+          <p>Cliente: <%= venda.cliente.nome %></p>
+          <p>Veículo: <%= venda.veiculo.modelo %></p>
+          <p>Vendedor: <%= venda.vendedor.nome%></p>
+          <p>Valor: <%= number_to_currency(venda.valor) %></p>
+          <p>Status: <%= venda.status.capitalize %></p>
+          <%= link_to "Show this venda", venda %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
