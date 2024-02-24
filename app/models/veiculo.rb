@@ -14,19 +14,28 @@ class Veiculo < ApplicationRecord
 
   before_validation :calcular_tabela_fipe
 
+  private
+
   def calcular_tabela_fipe
     return unless ano.present? && valor_anuncio.present?
 
-    descontos = {
-      (1980..1990) => 0.2,
-      (1990..2000) => 0.15,
-      (2000..2010) => 0.1,
-      (2010..2020) => 0.08,
-      (2020..2024) => 0.05
-    }
+    desconto_percentual = obter_desconto_por_ano
+    self.tabela_fipe = calcular_valor_com_desconto(desconto_percentual)
+  end
 
-    desconto_percentual = descontos.find { |intervalo, _| intervalo.include?(ano.to_i) }&.last || descontos.values.last
-    self.tabela_fipe = valor_anuncio * (1 - desconto_percentual)
+  def obter_desconto_por_ano
+    descontos = {
+      1980..1990 => 0.2,
+      1990..2000 => 0.15,
+      2000..2010 => 0.1,
+      2010..2020 => 0.08,
+      2020..2023 => 0.05
+    }
+    descontos.find { |intervalo, _| intervalo.include?(ano.to_i) }&.last || descontos.values.last
+  end
+
+  def calcular_valor_com_desconto(desconto_percentual)
+    valor_anuncio * (1 - desconto_percentual)
   end
 
 end
