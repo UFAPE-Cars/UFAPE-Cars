@@ -10,37 +10,27 @@ class VeiculosController < ApplicationController
   def show
   end
 
-  # GET /veiculos/buscar
   def buscar
-    if params.key?('limite_inferior')
-      limite_inferior = params[:limite_inferior]
-      limite_superior = params[:limite_superior]
+    @limite_inferior = params.fetch(:limite_inferior, 0.0)
+    @limite_superior = params.fetch(:limite_superior, 9999999.0)
 
-      if limite_inferior.empty?
-        limite_inferior = 0.0
-      end
+    # Verifica se os parâmetros são nulos e depois se são vazios
+    @limite_inferior = 0.0 if @limite_inferior.nil? || @limite_inferior == ''
+    @limite_superior = 9999999.0 if @limite_superior.nil? || @limite_superior == ''
 
-      if limite_superior.empty?
-        limite_superior = 9999999.0
-      end
+    busca = Veiculo.all
 
-      busca = "valor_anuncio >= #{limite_inferior} AND valor_anuncio <= #{limite_superior}"
+    busca = busca.where("valor_anuncio >= ?", @limite_inferior.to_f)
+    busca = busca.where("valor_anuncio <= ?", @limite_superior.to_f)
 
-      if not params[:modelo].empty?
-        busca += " AND modelo LIKE '%#{params[:modelo]}%'"
-      end
-      
-      if not params[:uso].nil? and not params[:uso].eql? "Todos"
-        busca += " AND uso = '#{params[:uso]}'"
-      end
-      
-      @veiculos = Veiculo.where(busca)
-    else
-      @veiculos = Veiculo.all
-    end
-    
+    busca = busca.where("modelo LIKE ?", "%#{params[:modelo]}%") if params[:modelo].present?
+    busca = busca.where(uso: params[:uso]) if params[:uso].present? && params[:uso] != "Todos"
+
+    @veiculos = busca
+
     render :buscar
   end
+
 
   # GET /veiculos/new
   def new
