@@ -23,27 +23,19 @@ class VendedorsController < ApplicationController
   def create
     @vendedor = Vendedor.new(vendedor_params)
 
-    respond_to do |format|
-      if @vendedor.save
-        format.html { redirect_to vendedor_url(@vendedor), notice: "Vendedor was successfully created." }
-        format.json { render :show, status: :created, location: @vendedor }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vendedor.errors, status: :unprocessable_entity }
-      end
+    if @vendedor.save
+      respond_to_vendedor(@vendedor, :created, "Vendedor was successfully created.")
+    else
+      respond_with_errors(:new)
     end
   end
 
   # PATCH/PUT /vendedors/1 or /vendedors/1.json
   def update
-    respond_to do |format|
-      if @vendedor.update(vendedor_params)
-        format.html { redirect_to vendedor_url(@vendedor), notice: "Vendedor was successfully updated." }
-        format.json { render :show, status: :ok, location: @vendedor }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @vendedor.errors, status: :unprocessable_entity }
-      end
+    if @vendedor.update(vendedor_params)
+      respond_to_vendedor(@vendedor, :ok, "Vendedor was successfully updated.")
+    else
+      respond_with_errors(:edit)
     end
   end
 
@@ -73,5 +65,21 @@ class VendedorsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def vendedor_params
     params.require(:vendedor).permit(:nome, :idade, :cpf, :comissao)
+  end
+
+  # Metodo refatorado de "respond_to" de create e update (sucesso)
+  def respond_to_vendedor(vendedor, status, notice)
+    respond_to do |format|
+      format.html { redirect_to vendedors_url(vendedor), notice: notice }
+      format.json { render :show, status: status, location: vendedor }
+    end
+  end
+
+  # Metodo refatorado de "respond_to" de create e update (erro)
+  def respond_with_errors(action)
+    respond_to do |format|
+      format.html { render action, status: :unprocessable_entity }
+      format.json { render json: @vendedor.errors, status: :unprocessable_entity }
+    end
   end
 end
