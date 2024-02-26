@@ -27,26 +27,18 @@ class VendasController < ApplicationController
   def create
     @venda = Venda.new(venda_params)
 
-    respond_to do |format|
-      if @venda.save
-        format.html { redirect_to @venda, notice: 'Venda was successfully created.' }
-        format.json { render :show, status: :created, location: @venda }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @venda.errors, status: :unprocessable_entity }
-      end
+    if @venda.save
+      respond_to_venda(@venda, :created, 'Venda was successfully created.')
+    else
+      respond_with_errors(:new)
     end
   end
 
   def update
-    respond_to do |format|
-      if @venda.update(venda_params)
-        format.html { redirect_to @venda, notice: 'Venda was successfully updated.' }
-        format.json { render :show, status: :ok, location: @venda }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @venda.errors, status: :unprocessable_entity }
-      end
+    if @venda.update(venda_params)
+      respond_to_venda(@venda, :ok, 'Venda was successfully updated.')
+    else
+      respond_with_errors(:edit)
     end
   end
 
@@ -70,5 +62,22 @@ class VendasController < ApplicationController
 
   def venda_params
     params.require(:venda).permit(:cliente_id, :veiculo_id, :vendedor_id, :valor, :status, :quantidade_veiculos)
+  end
+
+
+  # Metodo refatorado de "respond_to" de create e update (sucesso)
+  def respond_to_venda(venda, status, notice)
+    respond_to do |format|
+      format.html { redirect_to venda_url(venda), notice: notice }
+      format.json { render :show, status: status, location: venda }
+    end
+  end
+
+  # Metodo refatorado de "respond_to" de create e update (erro)
+  def respond_with_errors(action)
+    respond_to do |format|
+      format.html { render action, status: :unprocessable_entity }
+      format.json { render json: @venda.errors, status: :unprocessable_entity }
+    end
   end
 end
