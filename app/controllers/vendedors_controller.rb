@@ -70,7 +70,7 @@ class VendedorsController < ApplicationController
   # Metodo refatorado de "respond_to" de create e update (sucesso)
   def respond_to_vendedor(vendedor, status, notice)
     respond_to do |format|
-      format.html { redirect_to vendedors_url(vendedor), notice: notice }
+      format.html { redirect_to vendedor_url(vendedor), notice: notice }
       format.json { render :show, status: status, location: vendedor }
     end
   end
