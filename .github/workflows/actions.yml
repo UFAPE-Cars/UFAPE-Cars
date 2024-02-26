@@ -55,3 +55,9 @@ jobs:
            DISABLE_SPRING: 1
          run: |
            bundle exec rails db:prepare
+
+       - name: Run Model Tests
+         run: bundle exec rails test:models
+
+       - name: Run Cucumber Tests
+         run: bundle exec cucumber
