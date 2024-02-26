@@ -23,27 +23,19 @@ class ClientesController < ApplicationController
   def create
     @cliente = Cliente.new(cliente_params)
 
-    respond_to do |format|
-      if @cliente.save
-        format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully created." }
-        format.json { render :show, status: :created, location: @cliente }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cliente.errors, status: :unprocessable_entity }
-      end
+    if @cliente.save
+      respond_to_client(@cliente, :created, "Cliente was successfully created.")
+    else
+      respond_with_errors(:new)
     end
   end
 
   # PATCH/PUT /clientes/1 or /clientes/1.json
   def update
-    respond_to do |format|
-      if @cliente.update(cliente_params)
-        format.html { redirect_to cliente_url(@cliente), notice: "Cliente was successfully updated." }
-        format.json { render :show, status: :ok, location: @cliente }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cliente.errors, status: :unprocessable_entity }
-      end
+    if @cliente.update(cliente_params)
+      respond_to_client(@cliente, :ok, "Cliente was successfully updated.")
+    else
+      respond_with_errors(:edit)
     end
   end
 
@@ -67,4 +59,21 @@ class ClientesController < ApplicationController
     def cliente_params
       params.require(:cliente).permit(:nome, :telefone, :email, :idade, :cpf)
     end
+
+
+  # Metodo refatorado de "respond_to" de create e update (sucesso)
+  def respond_to_client(cliente, status, notice)
+    respond_to do |format|
+      format.html { redirect_to cliente_url(cliente), notice: notice }
+      format.json { render :show, status: status, location: cliente }
+    end
+  end
+
+  # Metodo refatorado de "respond_to" de create e update (erro)
+  def respond_with_errors(action)
+    respond_to do |format|
+      format.html { render action, status: :unprocessable_entity }
+      format.json { render json: @cliente.errors, status: :unprocessable_entity }
+    end
+  end
 end
