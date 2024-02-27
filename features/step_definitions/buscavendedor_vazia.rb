@@ -4,6 +4,6 @@ When('eu realizo uma busca vazia') do
   click_button 'Buscar'
 end
 
-Then('o sistema mostra os vendedores disponíveis sem o resultado da busca feita') do
+Then('o sistema mostra os vendedores disponiveis sem o resultado da busca feita') do
 
 end

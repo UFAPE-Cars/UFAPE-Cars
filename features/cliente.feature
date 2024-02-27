@@ -1,6 +1,6 @@
 Feature: Gerenciamento de cliente
   As a Usuario do sistema
-  I want to registrar, editar e remover um cliente da concessionária
+  I want to registrar, editar e remover um cliente da concessionaria
   So that eu mantenha o registro de clientes atualizado
 
   Scenario: registrar cliente

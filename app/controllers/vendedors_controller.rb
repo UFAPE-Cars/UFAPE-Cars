@@ -1,6 +1,6 @@
 class VendedorsController < ApplicationController
   before_action :set_vendedor, only: %i[ show edit update destroy ]
-  before_action :authenticate_usuario!
+  # before_action :authenticate_usuario!
 
   # GET /vendedors or /vendedors.json
   def index

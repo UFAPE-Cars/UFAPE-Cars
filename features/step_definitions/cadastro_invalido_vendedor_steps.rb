@@ -3,7 +3,7 @@ Given('Estou na pagina referente ao de registrar um vendedor') do
   expect(page).to have_current_path('/vendedors/new')
 end
 
-When('O vendedor com os campos de registro com nome {string}, idade {string}, cpf {string}, comissão {string}') do |nome, idade, cpf, comissao|
+When('O vendedor com os campos de registro com nome {string}, idade {string}, cpf {string}, comissao {string}') do |nome, idade, cpf, comissao|
   fill_in 'Nome', with: nome
   fill_in 'Idade', with: idade
   fill_in 'Cpf', with: cpf

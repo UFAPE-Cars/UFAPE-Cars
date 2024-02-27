@@ -10,6 +10,6 @@ When('eu busco o vendedor pelo nome {string}') do |nome|
 end
 
 
-Then('devo visualizar o histórico de vendas do vendedor') do
+Then('devo visualizar o historico de vendas do vendedor') do
   expect(page).to have_content('Ver Histórico de Vendas')
 end
