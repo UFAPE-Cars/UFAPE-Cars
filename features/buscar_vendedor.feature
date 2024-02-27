@@ -11,7 +11,7 @@ Feature: Buscar um vendedor
   Scenario: Buscar vendedor por CPF inexistente
     Given que eu estou na pagina de busca de vendedores
     When eu busco um vendedor pelo CPF "999.999.999-99"
-    Then o sistema retorna nenhum vendedor
+    Then o sistema mostra uma mensagem informando que nao existe aquele vendedor cadastrado
 
   Scenario: Buscar vendedor por CPF existente
     Given que eu estou na pagina de busca de vendedores
@@ -27,4 +27,4 @@ Feature: Buscar um vendedor
   Scenario: Buscar vendedor por um numero que nao corresponde a nenhum vendedor
     Given que eu estou na pagina de busca de vendedores
     When eu busco o vendedor pelo numero de busca "12345"
-    Then o sistema nao mostra nenhum vendedor
+    Then o sistema mostra uma mensagem informando que nao encontrou nenhum vendedor

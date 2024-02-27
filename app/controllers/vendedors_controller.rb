@@ -56,6 +56,8 @@ class VendedorsController < ApplicationController
     if @vendedors.empty?
       flash.now[:notice] = "Vendedor não encontrado"
     end
+
+    render :index
   end
 
   private

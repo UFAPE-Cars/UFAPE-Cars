@@ -8,5 +8,6 @@ When('eu busco o vendedor pelo numero de busca {string}') do |numero|
   fill_in 'q', with: numero
   click_button 'Buscar'
 end
-Then('o sistema nao mostra nenhum vendedor') do
+Then('o sistema mostra uma mensagem informando que nao encontrou nenhum vendedor') do
+  expect(page).to have_content('Nenhum vendedor encontrado')
 end
