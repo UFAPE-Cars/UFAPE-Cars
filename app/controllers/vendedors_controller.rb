@@ -57,11 +57,12 @@ class VendedorsController < ApplicationController
     end
   end
 
-  # Adicionando a ação de buscar
   def buscar
-    query = params[:q]
-    @vendedors = Vendedor.where('nome LIKE ? OR cpf = ?', "%#{query}%", query)
-    render :index  # Pode optar por renderizar uma view específica para resultados de busca
+    @query = params[:q]
+    @vendedors = Vendedor.where("nome LIKE ? OR cpf LIKE ?", "%#{@query}%", "%#{@query}%")
+    if @vendedors.empty?
+      flash.now[:notice] = "Vendedor não encontrado"
+    end
   end
 
   private

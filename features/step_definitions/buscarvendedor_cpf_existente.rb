@@ -1,7 +1,12 @@
-Given('existe um vendedor com nome {string}, CPF {string}') do |nome, cpf|
-  Vendedor.create!(nome: nome, cpf: cpf, idade: 30, comissao: 0.5) # Ajuste conforme seu modelo
+Given('eu estou na página de busca de vendedores') do
+  visit buscar_vendedors_path
 end
 
-Then('o sistema retorna os detalhes do vendedor {string}') do |nome_esperado|
-  expect(page).to have_content(nome_esperado)
+When('busco um vendedor pelo CPF {string}') do |cpf|
+  fill_in 'CPF', with: cpf
+  click_button 'Buscar'
+end
+
+Then('o sistema retorna nenhum vendedor') do
+  expect(page).not_to have_content('Detalhes do Vendedor')
 end
