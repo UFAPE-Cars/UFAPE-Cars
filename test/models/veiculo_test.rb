@@ -1,7 +1,5 @@
 require "test_helper"
 
-has_many  :vendas
-
 class VeiculoTest < ActiveSupport::TestCase
   test 'veiculo deve ser valido' do
     veiculo = Veiculo.new(
@@ -85,6 +83,36 @@ class VeiculoTest < ActiveSupport::TestCase
       valor_anuncio: 0.2
     )
     assert_not veiculo.valid?
+  end
+
+  test 'salvar veiculo no banco de dados' do
+    veiculo = Veiculo.new(
+      modelo: 'Carro Teste',
+      ano: 2020,
+      quilometragem: 50000,
+      uso: 'Usado',
+      historico_manutencao: 'Manutenção em dia',
+      valor_anuncio: 30000
+    )
+
+    assert_difference('Veiculo.count') do
+      veiculo.save
+    end
+  end
+
+  test 'excluir veiculo do banco de dados' do
+    veiculo = Veiculo.create(
+      modelo: 'Carro Teste',
+      ano: 2020,
+      quilometragem: 50000,
+      uso: 'Usado',
+      historico_manutencao: 'Manutenção em dia',
+      valor_anuncio: 30000
+    )
+
+    assert_difference('Veiculo.count', -1) do
+      veiculo.destroy
+    end
   end
 
 end

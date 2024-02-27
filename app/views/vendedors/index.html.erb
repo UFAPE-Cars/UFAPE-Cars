@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 <%= link_to 'Home', root_path %>
 
+<% if notice %>
+  <p style="color: yellow"><%= notice %></p>
+<% end %>
+
 <h1>Vendedores</h1>
 
 <%= form_with(url: buscar_vendedors_path, method: :get, local: true) do |form| %>
@@ -14,14 +18,16 @@
 <% end %>
 
 <div id="vendedors">
-  <% @vendedors.each do |vendedor| %>
-    <div>
-      <p><%= vendedor.nome %> - <%= vendedor.cpf %></p>
-      <p>
-        <%= link_to "Show this vendedor", vendedor %>
-        <%= link_to 'Ver Histórico de Vendas', vendedor_vendas_path(vendedor_id: vendedor.id) %>
-      </p>
-    </div>
+  <% if @vendedors.present? %>
+    <% @vendedors.each do |vendedor| %>
+      <div>
+        <p><%= vendedor.nome %> - <%= vendedor.cpf %></p>
+        <p>
+          <%= link_to "Show this vendedor", vendedor %>
+          <%= link_to 'Ver Histórico de Vendas', vendedor_vendas_path(vendedor_id: vendedor.id) %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
