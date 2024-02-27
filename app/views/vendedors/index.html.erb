@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to 'Home', root_path %>
 
-<h1>Vendedors</h1>
+<h1>Vendedores</h1>
 
 <%= form_with(url: buscar_vendedors_path, method: :get, local: true) do |form| %>
   <div class="field">
