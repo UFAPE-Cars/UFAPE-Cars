@@ -1,5 +1,7 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to 'Home', root_path %>
 
+<h1>Vendas</h1>
 <% if @vendedor.present? %>
   <h1>Historico de Vendas de <%= @vendedor.nome %></h1>
 

@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
+<%= link_to 'Home', root_path %>
 
 <h1>Veiculos</h1>
+<%= link_to 'Buscar Veículos', buscar_veiculos_path %>
+
 <div id="veiculos">
   <% @veiculos.each do |veiculo| %>
     <%= render veiculo %>
