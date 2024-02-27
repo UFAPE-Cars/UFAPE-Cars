@@ -81,4 +81,31 @@ class VendedorTest < ActiveSupport::TestCase
     )
     assert_respond_to vendedor, :vendas
   end
+
+  test 'salvar vendedor no banco de dados' do
+    vendedor = Vendedor.new(
+      nome: "Joas Vitor",
+      idade: 21,
+      cpf: "123.456.789-00",
+      comissao: 5.0
+    )
+  
+    assert_difference('Vendedor.count') do
+      vendedor.save
+    end
+  end
+  
+  test 'excluir vendedor do banco de dados' do
+    vendedor = Vendedor.create(
+      nome: "Joas Vitor",
+      idade: 21,
+      cpf: "123.456.789-00",
+      comissao: 5.0
+    )
+  
+    assert_difference('Vendedor.count', -1) do
+      vendedor.destroy
+    end
+  end
+  
 end

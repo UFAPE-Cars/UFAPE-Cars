@@ -55,4 +55,26 @@ class ClienteTest < ActiveSupport::TestCase
     @cliente.idade = 121 # Acima do limite
     assert_not @cliente.valid?
   end
+
+  setup do
+    @cliente = Cliente.new(nome: "João Silva",
+                           telefone: "(11)98765-4321",
+                           email: "joao@example.com",
+                           cpf: "12345678901",
+                           idade: 30)
+  end
+
+  test "salvar cliente no banco de dados" do
+    assert_difference('Cliente.count') do
+      @cliente.save
+    end
+  end
+
+  test "excluir cliente do banco de dados" do
+    @cliente.save
+    
+    assert_difference('Cliente.count', -1) do
+      @cliente.destroy
+    end
+  end
 end
