@@ -1,4 +1,4 @@
-Given('O vendedor de nome {string}, idade {string}, cpf {string}, comissão {string} existe') do |nome, idade, cpf, comissao|
+Given('O vendedor de nome {string}, idade {string}, cpf {string}, comissao {string} existe') do |nome, idade, cpf, comissao|
   visit '/vendedors/new'
   expect(page).to have_current_path('/vendedors/new')
   fill_in 'Nome', with: nome

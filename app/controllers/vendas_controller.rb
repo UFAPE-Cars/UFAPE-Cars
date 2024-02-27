@@ -2,6 +2,7 @@ class VendasController < ApplicationController
 
   before_action :set_venda, only: %i[show edit update destroy]
   before_action :set_vendedor, only: [:index]
+  # before_action :authenticate_usuario!
 
   def index
     if @vendedor
