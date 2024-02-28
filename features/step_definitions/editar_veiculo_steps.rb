@@ -1,4 +1,9 @@
 Given('O veiculo de modelo {string}, ano {string}, quilometragem {string}, uso {string}, historico de manutencao {string} e valor de anuncio {string} existe') do |modelo, ano, quilometragem, uso, historico_manutencao, valor_anuncio|
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   visit '/veiculos/new'
   expect(page).to have_current_path('/veiculos/new')
   fill_in 'Modelo', with: modelo

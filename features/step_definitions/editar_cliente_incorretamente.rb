@@ -1,4 +1,9 @@
 Given('O cliente ja registrado de nome {string}, telefone {string}, email {string}, cpf {string}, idade {int} existe') do |nome, telefone, email, cpf, idade|
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   visit '/clientes/new'
   expect(page).to have_current_path('/clientes/new')
   fill_in 'Nome', with: nome

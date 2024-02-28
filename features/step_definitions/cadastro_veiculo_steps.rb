@@ -1,4 +1,9 @@
 Given('Estou na pagina de registrar um veiculo') do
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   visit '/veiculos/new'
   expect(page).to have_current_path('/veiculos/new')
 end

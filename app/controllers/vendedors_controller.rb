@@ -1,5 +1,6 @@
 class VendedorsController < ApplicationController
   before_action :set_vendedor, only: %i[ show edit update destroy ]
+  before_action :authenticate_usuario!
 
   # GET /vendedors or /vendedors.json
   def index
@@ -55,6 +56,8 @@ class VendedorsController < ApplicationController
     if @vendedors.empty?
       flash.now[:notice] = "Vendedor não encontrado"
     end
+
+    render :index
   end
 
   private

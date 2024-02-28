@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :usuarios, controllers: {
+    sessions: 'usuarios/sessions'
+  }
+
   resources :vendas
   resources :clientes
   resources :veiculos do

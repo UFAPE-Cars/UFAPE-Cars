@@ -1,4 +1,9 @@
-Given('O vendedor de nome {string}, idade {string}, cpf {string}, comissão {string} existe') do |nome, idade, cpf, comissao|
+Given('O vendedor de nome {string}, idade {string}, cpf {string}, comissao {string} existe') do |nome, idade, cpf, comissao|
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   visit '/vendedors/new'
   expect(page).to have_current_path('/vendedors/new')
   fill_in 'Nome', with: nome
