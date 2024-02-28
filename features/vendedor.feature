@@ -4,13 +4,13 @@ Feature: Gerenciamento de vendedor
   So that eu mantenha o registro de vendedores atualizado
 
   Scenario: Registrar vendedor
-    Given Estou na pagina referente a registrar um vendedor
+    Given Estou na pagina referente a registrar um vendedor com uma conta valida
     When Eu preencho os campos de registro com o nome 'Joás', idade '21', cpf '123.456.789-78', comissao '0'
     And Eu clico no botao de registrar vendedor
     Then Eu vejo uma mensagem de vendedor registrado
 
   Scenario: Registrar vendedor incorretamente
-    Given Estou na pagina referente ao de registrar um vendedor
+    Given Estou na pagina referente ao de registrar um vendedor com uma conta valida
     When O vendedor com os campos de registro com nome 'Marcos', idade '75', cpf 'cpf', comissao '0'
     And A seguir, eu clico no botao de registrar vendedor
     Then Eu vejo uma mensagem de erro informando que o registro do vendedor falhou

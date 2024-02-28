@@ -1,4 +1,13 @@
-Given('existe um vendedor com nome {string}, CPF {string}') do |nome, cpf|
+Given('que eu acesso na pagina de busca de vendedores') do
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
+  visit buscar_vendedors_path
+end
+
+And('existe um vendedor com nome {string}, CPF {string}') do |nome, cpf|
   Vendedor.create!(nome: nome, cpf: cpf, idade: 30, comissao: 0.5) # Ajuste conforme seu modelo
 end
 

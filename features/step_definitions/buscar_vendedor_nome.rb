@@ -1,4 +1,9 @@
 Given('existe um vendedor com nome {string}') do |nome|
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   Vendedor.create!(nome: nome, cpf: "123.456.789-10", idade: 30, comissao: 0.5)
 end
 

@@ -1,4 +1,9 @@
 Given('Estou na pagina referente ao de registrar um cliente') do
+  Usuario.create!(email: "teste@teste", password: "123456");
+  visit 'usuarios/sign_in'
+  fill_in 'Email', with: "teste@teste"
+  fill_in 'Senha', with: "123456"
+  click_button 'Entrar'
   visit '/clientes/new'
   expect(page).to have_current_path('/clientes/new')
 end
