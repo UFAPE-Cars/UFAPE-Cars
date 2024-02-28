@@ -4,6 +4,7 @@ Given('eu estou na pagina de edicao de venda') do
   fill_in 'Email', with: "teste@teste"
   fill_in 'Senha', with: "123456"
   click_button 'Entrar'
+  
   Veiculo.create!(modelo: "HB20", ano: "2022", quilometragem: 0, uso: "Novo", historico_manutencao: "...", valor_anuncio: 100, tabela_fipe: 110)
   Vendedor.create!(nome: "Felipe", cpf: "021.292.754-00", idade: 22, comissao: 0.5)
   Cliente.create!(email: "fabio.filho2001@hotmail.com", nome: "Fabio", telefone:"81993737193", cpf: "09104724402", idade: '22')
@@ -18,7 +19,7 @@ When('eu modifico os detalhes da venda') do
   fill_in 'Status:', with: 'cancelado'
 end
 
-When('eu clico no botao Editar venda') do
+And('eu clico no botao Editar venda') do
   click_button 'Update Venda'
 end
 
