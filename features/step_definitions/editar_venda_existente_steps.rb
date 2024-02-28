@@ -9,9 +9,7 @@ Given('eu estou na pagina de edicao de venda') do
   Vendedor.create!(nome: "Felipe", cpf: "021.292.754-00", idade: 22, comissao: 0.5)
   Cliente.create!(email: "fabio.filho2001@hotmail.com", nome: "Fabio", telefone:"81993737193", cpf: "09104724402", idade: '22')
   Venda.create!(cliente: Cliente.first, veiculo: Veiculo.first, vendedor: Vendedor.first, valor: 95000.00, quantidade_veiculos: 1, status:'concluido')
-  visit "/vendas"
-  click_link 'Show this venda'
-  click_link 'Edit this venda'
+  visit "/vendas/1/edit"
   expect(page).to have_current_path('/vendas/1/edit')
 end
 
