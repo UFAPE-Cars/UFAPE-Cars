@@ -41,6 +41,9 @@ preferências e histórico de clientes. Além disso, a implementação de recurs
 relatórios e análises será fundamental para fornecer insights sobre o desempenho
 das vendas, estoque e eficácia das estratégias de marketing.
 
+## Acessando o sistema
+Você poderá se cadastrar no sistema ou fazer login com o EMAIL *admin@gmail.com* e SENHA *admin123*
+
 ## Tecnologias Utilizadas
 <hr>
 
